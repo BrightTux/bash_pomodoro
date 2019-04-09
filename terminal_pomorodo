@@ -1,0 +1,31 @@
+#! /bin/sh
+
+# simple bash script for pomorodo timer
+# source: https://superuser.com/questions/224265/pomodoro-timer-for-linux
+
+#sleep 1500 && notify-send "break ⏰"; sleep 300 && notify-send "back to work 🧰"
+#sleep 1500 && zenity --info --text="Time for a break! ⏰ 25 minutes has passed!"; sleep 300 && zenity --info --text="Back to work! 💯"
+
+# sample:
+#passwd
+#while [ $? -ne 0 ]; do !!; done
+
+function pomo {
+
+	zenity --info --text="Starting Pomodoro Timer 💯!"
+	sleep 1500 && zenity --info --text="⏰ Time to take a break?"
+       	sleep 300 && zenity --question --text="Back to work! Restart timer? 🔃" --ok-label="No." --cancel-label="Yes, restart!"
+
+}
+
+pomo
+while [ $? -ne 0 ]; do pomo; done
+
+#if [ $? ]
+#then
+#	sleep 900 && zenity --question --text="Back to work! 💯 Restart timer?" --ok-label="No." --cancel-label="Yes, restart!"
+#else
+#	sleep 300 && zenity --question --text="Back to work! 💯 Restart timer?" --ok-label="No." --cancel-label="Yes, restart!"
+#fi
+
+
